@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Hide Reddit Votes",
+  "version": "1.0",
+  "description": "Hides Reddit Vote Count and/or Buttons.",
+  "permissions": ["activeTab"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.reddit.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
