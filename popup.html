@@ -2,8 +2,39 @@
 <html>
 <head>
     <title>Hide Reddit Votes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 10px;
+            width: 200px;
+        }
+        h1 {
+            font-size: 16px;
+        }
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+        button {
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-<h1>Reddit Votes are Hidden</h1>
+<h1>Reddit Votes Hider</h1>
+<label>
+    <input type="radio" name="option" value="hide-all" checked>
+    Hide vote counts and buttons
+</label>
+<label>
+    <input type="radio" name="option" value="hide-vote-counts">
+    Hide vote counts only
+</label>
+<label>
+    <input type="radio" name="option" value="hide-buttons">
+    Hide buttons only
+</label>
+<button id="apply">Apply</button>
+<script src="popup.js"></script>
 </body>
 </html>
