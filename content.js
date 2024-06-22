@@ -4,9 +4,22 @@ const hideElements = (hideButtons, hideCounts) => {
         const shadowRoot = post.shadowRoot;
         if (shadowRoot) {
             const upvoteButton = shadowRoot.querySelectorAll('button[upvote]')[0];
-            const voteCountSpan = shadowRoot.querySelectorAll('button[upvote] + span')[0];
             const downvoteButton = shadowRoot.querySelectorAll('button[downvote]')[0];
             const votePill = upvoteButton.parentElement;
+
+            let voteCountSpan = shadowRoot.querySelectorAll('button[upvote] + span')[0];
+            if(!voteCountSpan) {
+                let sibling = upvoteButton.nextSibling;
+                while (sibling) {
+                    if (sibling.nodeType === 3 && sibling.nodeValue.trim() === 'Vote') { // 3 is the nodeType for text nodes
+                        voteCountSpan = document.createElement('span');
+                        voteCountSpan.textContent = sibling.nodeValue;
+                        sibling.replaceWith(voteCountSpan);
+                        break;
+                    }
+                    sibling = sibling.nextSibling;
+                }
+            }
 
             if (hideButtons) {
                 upvoteButton.style.display = 'none';
